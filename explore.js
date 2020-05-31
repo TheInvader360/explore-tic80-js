@@ -16,7 +16,7 @@ function TIC()
 
 	cls(13)
 	spr(1+((t%60)/30|0)*2,x,y,14,3,0,0,2,2)
-	print("HELLO WORLD!",84,84)
+	print("EDITED .JS FILE IN ATOM EDITOR!",34,84)
 	t++
 }
 
@@ -44,4 +44,3 @@ function TIC()
 // <PALETTE>
 // 000:1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57
 // </PALETTE>
-
