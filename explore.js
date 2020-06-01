@@ -7,7 +7,16 @@
 const TILE_BLOCKED = 0,
       TILE_SIZE = 8;
 
-var player, ticks;
+var camera, player, ticks;
+
+function initCamera() {
+  camera = {
+    x: 0,
+    y: 0,
+    w: 30,
+    h: 17
+  };
+}
 
 function initPlayer() {
   player = {
@@ -19,6 +28,7 @@ function initPlayer() {
 
 function init() {
   ticks = 0;
+  initCamera();
   initPlayer();
 }
 
@@ -44,12 +54,18 @@ function movePlayer() {
   }
 }
 
+function updateCamera() {
+  camera.x = Math.floor(player.x / camera.w) * camera.w;
+  camera.y = Math.floor(player.y / camera.h) * camera.h;
+}
+
 function TIC() {
   ticks++;
   if (ticks %5 === 0) movePlayer();
+  updateCamera();
   cls();
-  map();
-  spr(player.sprite, player.x * TILE_SIZE, player.y * TILE_SIZE, 6);
+  map(camera.x, camera.y, camera.w, camera.h);
+  spr(player.sprite, (player.x - camera.x) * TILE_SIZE, (player.y - camera.y) * TILE_SIZE, 6);
   print(ticks, 0, 128, 12);
 }
 
